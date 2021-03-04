@@ -2,7 +2,7 @@
   --primary-text-color: rgba(33, 33, 33, 1);
   --dop-text-color: rgba(117, 117, 117, 1);
   --title-text-color: rgba(33, 150, 243, 1);
-  --overlay-color: rgba(33, 150, 243, 0.9);
+  --overlay-work-color: rgba(33, 150, 243, 0.9);
   --hero-color: rgba(47, 48, 58, 1);
   --overlay-color: rgba(47, 48, 58, 0.8);
   --h-text-color: rgba(255, 255, 255, 1);
@@ -136,6 +136,9 @@ img {
   /* opacity: 1; */
 }
 
+.site-nav .link.current::after {
+  /* opacity: 1; */
+}
 /* ---------ИКОНКИ */
 
 .icon-cont {
@@ -234,7 +237,6 @@ img {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-  /* transform: translateX(-50%) translateY(-50%); */
   transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms var(--timing-fn);
 }
@@ -243,8 +245,6 @@ img {
   position: absolute;
   top: 8px;
   right: 8px;
-  width: 30px;
-  height: 30px;
 }
 
 /* section about */
@@ -733,7 +733,7 @@ a:link {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: var(--overlay-color);
+  background-color: var(--overlay-work-color);
   transform: translateY(100%);
   transition: transform 250ms var(--timing-fn);
 }
