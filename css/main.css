@@ -60,7 +60,6 @@ img {
 .contacts-nav .link:hover,
 .contacts-nav .link:focus {
   color: var(--title-text-color);
-  transition: color 250ms var(--timing-fn);
 }
 
 .site-nav .link.current {
@@ -78,6 +77,7 @@ img {
   display: block;
   padding-top: 32px;
   padding-bottom: 32px;
+  transition: color 250ms var(--timing-fn);
 }
 
 .contacts-nav .link {
@@ -110,7 +110,7 @@ img {
 .contacts-nav .item + .item {
   margin-left: 30px;
 }
-
+/* ------------подчёркивание ссылки текущей страницы------- */
 .site-nav .link {
   position: relative;
 }
@@ -124,22 +124,22 @@ img {
   height: 4px;
   background-color: var(--title-text-color);
   border-radius: 2px;
-  opacity: 0;
-  transition: color 250ms var(--timing-fn);
+  /* opacity: 0; */
+  transform: scaleX(0);
+  transition: transform 250ms var(--timing-fn);
 }
 
 .site-nav .link:hover::after,
 .site-nav .link:focus::after,
 .site-nav .link.current::after {
-  opacity: 1;
+  transform: scaleX(1);
+  /* opacity: 1; */
 }
 
 /* ---------ИКОНКИ */
 
 .icon-cont {
   display: inline;
-  /* width: 16px; */
-  /* height: 12px; */
   margin-right: 10px;
 }
 
@@ -148,10 +148,13 @@ img {
   align-items: center;
 }
 
+.contacts-nav .item {
+  transition: fill 250ms var(--timing-fn);
+}
+
 .contacts-nav .item:hover,
 .contacts-nav .item:focus {
   fill: currentColor;
-  transition: color 250ms var(--timing-fn);
 }
 
 /* section hero */
@@ -199,12 +202,6 @@ img {
   color: var(--h-text-color);
 }
 /* ------Модальное окно----------- */
-.backdrop.is-hidden {
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
 .backdrop {
   position: fixed;
   top: 0;
@@ -212,8 +209,19 @@ img {
   width: 100%;
   height: 100%;
   background-color: rgba(157, 164, 189, 0.4);
+  z-index: 1000;
+  opacity: 1;
+  /* transition: opacity 250ms var(--timing-fn); */
+}
 
-  /* transition: opacity var(--animation-dur) var(--animation-type); */
+.backdrop.is-hidden {
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
 }
 
 .modal {
@@ -226,19 +234,15 @@ img {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
   border-radius: 4px;
-
-  transform: translateX(-50%) translateY(-50%);
+  /* transform: translateX(-50%) translateY(-50%); */
+  transform: translate(-50%, -50%) scale(1);
   transition: transform 250ms var(--timing-fn);
 }
 
-.button-close.svg {
-  display: inline-flex;
-  padding-left: 100%;
-  border-bottom: none;
-  background-color: orange;
-}
-
-.modal svg {
+.button-close svg {
+  position: absolute;
+  top: 8px;
+  right: 8px;
   width: 30px;
   height: 30px;
 }
@@ -453,18 +457,17 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
-  transition: background-color 250ms var(--timing-fn);
 }
 
 .social-link a:hover svg,
 .social-link a:focus svg {
   fill: var(--h-text-color);
-  transition: fill 250ms var(--timing-fn);
 }
 
 .social-link svg {
   width: 20px;
   fill: var(--icon-color);
+  transition: fill 250ms var(--timing-fn);
 }
 
 .social-link li:not(:last-child) {
@@ -488,18 +491,17 @@ img {
 
 .our-clients-card li svg {
   fill: var(--icon-color);
+  transition: fill 250ms var(--timing-fn);
 }
 
 .our-clients-card li:hover svg,
 .our-clients-card li:focus svg {
   fill: var(--title-text-color);
-  transition: fill 250ms var(--timing-fn);
 }
 
 .our-clients-card li:hover,
 .our-clients-card li:focus {
   border: 1px solid var(--title-text-color);
-  transition: border 250ms var(--timing-fn);
 }
 
 .our-clients-card li {
@@ -513,6 +515,7 @@ img {
   background-color: var(--h-text-color);
   border-radius: 4px;
   border: 1px solid var(--icon-color);
+  transition: border 250ms var(--timing-fn);
 }
 
 /* section foot */
@@ -557,7 +560,7 @@ img {
   padding: 0;
 }
 
-/* иконки соц сетей футер */
+/* --------------иконки СОЦ СЕТЕЙ footer --------*/
 .social-text {
   font-style: normal;
   color: var(--h-text-color);
@@ -601,12 +604,16 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+}
+
+.social-icons a {
   transition: background-color 250ms var(--timing-fn);
 }
 
 .social-icons svg {
   width: 20px;
   fill: white;
+  /* transition: fill 250ms var(--timing-fn); */
 }
 
 .social-icons li:not(:last-child) {
@@ -654,6 +661,7 @@ img {
   background-color: var(--button-color);
   text-align: center;
   border-color: transparent;
+  transition: background-color 250ms var(--timing-fn);
 }
 
 .buttonp .button:hover,
@@ -662,7 +670,6 @@ img {
   background-color: var(--title-text-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
-  transition: background-color 250ms var(--timing-fn);
 }
 
 /* Наши работы */
