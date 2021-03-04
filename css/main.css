@@ -14,6 +14,7 @@
   --card-set-gap: 30px;
   --card-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 1px 1px rgba(0, 0, 0, 0.14), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  --timing-fn: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 ul {
@@ -57,16 +58,11 @@ img {
 .contacts-nav .link:hover,
 .contacts-nav .link:focus {
   color: var(--title-text-color);
+  transition: color 250ms var(--timing-fn);
 }
 
 .site-nav .link.current {
   color: var(--title-text-color);
-}
-
-.list {
-  /* padding: 0;
-  margin: 0;
-  list-style: none; */
 }
 
 .site-nav .link,
@@ -113,6 +109,33 @@ img {
   margin-left: 30px;
 }
 
+.site-nav .link {
+  position: relative;
+}
+
+.site-nav .link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: var(--title-text-color);
+  border-radius: 2px;
+  opacity: 0;
+  transition: color 250ms var(--timing-fn);
+}
+
+.site-nav .link:hover::after,
+.site-nav .link:focus::after,
+.site-nav .link.current::after {
+  opacity: 1;
+}
+
+.site-nav .current::after {
+  /* opacity: 0; */
+}
+
 /* ---------ИКОНКИ */
 
 .icon-cont {
@@ -130,6 +153,7 @@ img {
 .contacts-nav .item:hover,
 .contacts-nav .item:focus {
   fill: currentColor;
+  transition: color 250ms var(--timing-fn);
 }
 
 /* section hero */
@@ -164,7 +188,6 @@ img {
 .button-primary {
   display: inline-block;
   padding: 10px 32px;
-  /* margin-bottom: 200px; */
   min-width: 200px;
   border-radius: 4px;
   text-align: center;
@@ -176,6 +199,44 @@ img {
   line-height: 1.9;
   background-color: var(--title-text-color);
   color: var(--h-text-color);
+}
+/* ------Модальное окно----------- */
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(157, 164, 189, 0.4);
+
+  /* transition: opacity var(--animation-dur) var(--animation-type); */
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 528px;
+  height: 581px;
+  background-color: var(--bcolor-icon);
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+
+  transform: translateX(-50%) translateY(-50%);
+  /* transition: transform var(--animation-dur) var(--animation-type); */
+}
+
+.modal svg {
+  width: 30px;
+  height: 30px;
+  /* fill: var(--icon-color); */
 }
 
 /* section about */
@@ -364,11 +425,13 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  transition: background-color 250ms var(--timing-fn);
 }
 
 .social-link a:hover svg,
 .social-link a:focus svg {
   fill: var(--h-text-color);
+  transition: fill 250ms var(--timing-fn);
 }
 
 .social-link svg {
@@ -402,11 +465,13 @@ img {
 .our-clients-card li:hover svg,
 .our-clients-card li:focus svg {
   fill: var(--title-text-color);
+  transition: fill 250ms var(--timing-fn);
 }
 
 .our-clients-card li:hover,
 .our-clients-card li:focus {
   border: 1px solid var(--title-text-color);
+  transition: border 250ms var(--timing-fn);
 }
 
 .our-clients-card li {
@@ -508,6 +573,7 @@ img {
   width: 44px;
   height: 44px;
   border-radius: 50%;
+  transition: background-color 250ms var(--timing-fn);
 }
 
 .social-icons svg {
@@ -568,6 +634,7 @@ img {
   background-color: var(--title-text-color);
   box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
     0px 2px 2px rgba(0, 0, 0, 0.12);
+  transition: background-color 250ms var(--timing-fn);
 }
 
 /* Наши работы */
@@ -597,6 +664,7 @@ a:link {
   border: 1px solid var(--card-border);
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
     1px 4px 6px rgba(0, 0, 0, 0.16);
+  transition: border 250ms var(--timing-fn);
 }
 
 .card-content-works {
