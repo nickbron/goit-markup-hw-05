@@ -229,10 +229,14 @@ img {
 
 .modal {
   position: absolute;
+  padding: 40px;
   top: 50%;
   left: 50%;
-  width: 528px;
-  height: 581px;
+  max-width: 528px;
+  width: 100%;
+  min-height: 581px;
+  max-height: 100vh;
+  overflow-y: auto;
   background-color: var(--h-text-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
     0px 2px 1px rgba(0, 0, 0, 0.2);
@@ -241,8 +245,17 @@ img {
   transition: transform 250ms var(--timing-fn);
 }
 
-.button-close svg {
+.close-button {
   position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: auto;
+  background: var(--h-text-color);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
   top: 8px;
   right: 8px;
 }
