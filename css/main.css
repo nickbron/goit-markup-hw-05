@@ -55,24 +55,16 @@ img {
 }
 
 /* Site nav */
-.site-nav .link:hover,
-.site-nav .link:focus,
-.contacts-nav .link:hover,
-.contacts-nav .link:focus {
-  color: var(--title-text-color);
-}
 
 .site-nav .link.current {
   color: var(--title-text-color);
 }
 
-.site-nav .link,
-.contacts-nav .link {
+.site-nav .link {
   text-decoration: none;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.14;
-  letter-spacing: 0.02em;
   color: var(--primary-text-color);
   display: block;
   padding-top: 32px;
@@ -80,9 +72,41 @@ img {
   transition: color 250ms var(--timing-fn);
 }
 
-.contacts-nav .link {
-  color: var(--dop-text-color);
+.site-nav .link:hover,
+.site-nav .link:focus {
+  color: var(--title-text-color);
 }
+
+.contacts-nav .link {
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 1.14;
+  color: var(--dop-text-color);
+  display: block;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  transition: color 250ms var(--timing-fn), fill 250ms var(--timing-fn);
+}
+
+.contacts-nav .link:hover,
+.contacts-nav .link:focus {
+  color: var(--title-text-color);
+  fill: var(--title-text-color);
+}
+
+/* ---------ИКОНКИ */
+
+.icon-cont {
+  display: inline;
+  margin-right: 10px;
+}
+
+.contacts-nav .item .link {
+  display: flex;
+  align-items: center;
+}
+/* ------------------------ */
 
 .main-nav {
   display: flex;
@@ -124,7 +148,6 @@ img {
   height: 4px;
   background-color: var(--title-text-color);
   border-radius: 2px;
-  /* opacity: 0; */
   transform: scaleX(0);
   transition: transform 250ms var(--timing-fn);
 }
@@ -133,31 +156,6 @@ img {
 .site-nav .link:focus::after,
 .site-nav .link.current::after {
   transform: scaleX(1);
-  /* opacity: 1; */
-}
-
-.site-nav .link.current::after {
-  /* opacity: 1; */
-}
-/* ---------ИКОНКИ */
-
-.icon-cont {
-  display: inline;
-  margin-right: 10px;
-}
-
-.contacts-nav .item .link {
-  display: flex;
-  align-items: center;
-}
-
-.contacts-nav .item {
-  transition: fill 250ms var(--timing-fn);
-}
-
-.contacts-nav .item:hover,
-.contacts-nav .item:focus {
-  fill: currentColor;
 }
 
 /* section hero */
@@ -211,10 +209,9 @@ img {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(157, 164, 189, 0.4);
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 1000;
   opacity: 1;
-  /* transition: opacity 250ms var(--timing-fn); */
 }
 
 .backdrop.is-hidden {
